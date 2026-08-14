@@ -13,7 +13,10 @@ RUN install -d -m 2775 -o 42420 -g 42420 \
       /workspace/data/outputs \
       /workspace/data/config_states \
       /workspace/.cache \
-      /tmp
+      /tmp \
+      /app/repositories \
+      /app/config_states \
+      /app/tmp
 
 COPY --chown=42420:42420 ovh-entrypoint.sh /usr/local/bin/ovh-entrypoint.sh
 RUN chmod 0755 /usr/local/bin/ovh-entrypoint.sh
