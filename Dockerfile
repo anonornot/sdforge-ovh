@@ -8,15 +8,23 @@ USER 0
 # /workspace is the documented AI workload home directory.
 RUN install -d -m 2775 -o 42420 -g 42420 \
       /workspace \
-      /workspace/forge-data \
-      /workspace/forge-data/models \
-      /workspace/forge-data/outputs \
-      /workspace/forge-data/config_states \
+      /workspace/data \
+      /workspace/data/models \
+      /workspace/data/outputs \
+      /workspace/data/config_states \
       /workspace/.cache \
       /tmp \
       /app/repositories \
       /app/config_states \
-      /app/tmp
+      /app/tmp \
+      /opt/forge-models
+
+ARG CIVITAI_MODEL_URL="https://civitai.red/api/download/models/2883731?fileId=2763986"
+ARG CIVITAI_MODEL_FILENAME="waiIllustriousSDXL_v170.safetensors"
+RUN curl --fail --location --retry 5 --retry-delay 10 \
+      --output "/opt/forge-models/${CIVITAI_MODEL_FILENAME}" \
+      "${CIVITAI_MODEL_URL}" \
+    && chown 42420:42420 "/opt/forge-models/${CIVITAI_MODEL_FILENAME}"
 
 COPY --chown=42420:42420 ovh-entrypoint.sh /usr/local/bin/ovh-entrypoint.sh
 RUN chmod 0755 /usr/local/bin/ovh-entrypoint.sh
