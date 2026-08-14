@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-DATA_DIR="${FORGE_DATA_DIR:-/workspace/data}"
+DATA_DIR="${FORGE_DATA_DIR:-/workspace/forge-data}"
 PORT="${FORGE_PORT:-7860}"
 PYTHON_BIN="/home/1001/.local/bin/python"
 
