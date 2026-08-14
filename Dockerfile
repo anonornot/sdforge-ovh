@@ -8,10 +8,10 @@ USER 0
 # /workspace is the documented AI workload home directory.
 RUN install -d -m 2775 -o 42420 -g 42420 \
       /workspace \
-      /workspace/data \
-      /workspace/data/models \
-      /workspace/data/outputs \
-      /workspace/data/config_states \
+      /workspace/forge-data \
+      /workspace/forge-data/models \
+      /workspace/forge-data/outputs \
+      /workspace/forge-data/config_states \
       /workspace/.cache \
       /tmp \
       /app/repositories \
